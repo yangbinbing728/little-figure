@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #263a31;
+  background: #f6f0df;
+}
+
+.ride-page {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: clamp(24px, 4vw, 56px);
+  background:
+    linear-gradient(rgba(246, 240, 223, 0.28), rgba(246, 240, 223, 0.28)),
+    url("images/NYC.jpg") center / cover no-repeat;
+}
+
+.ride-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.ride-header h1 {
+  margin: 0;
+  font-size: clamp(56px, 10vw, 130px);
+  line-height: 0.85;
+  letter-spacing: -0.08em;
+}
+
+.instruction {
+  margin: 16px 0 0;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.home-logo {
+  display: block;
+  width: 58px;
+  height: 58px;
+  padding: 5px;
+  border: 1px solid rgba(38, 58, 49, 0.45);
+  border-radius: 50%;
+  background: rgba(255, 253, 244, 0.8);
+}
+
+.home-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.map-label {
+  position: absolute;
+  top: 30%;
+  right: 8%;
+  color: rgba(38, 58, 49, 0.65);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.ride-stops {
+  position: absolute;
+  right: clamp(24px, 5vw, 72px);
+  bottom: clamp(24px, 5vh, 58px);
+  left: clamp(24px, 5vw, 72px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 28px);
+  align-items: end;
+}
+
+.ride-card {
+  padding: 10px;
+  border: 1px solid rgba(38, 58, 49, 0.45);
+  border-radius: 100px 100px 12px 12px;
+  background: rgba(255, 253, 244, 0.8);
+  box-shadow: 0 8px 24px rgba(38, 58, 49, 0.12);
+}
+
+.ride-card:nth-child(2) {
+  margin-bottom: 34px;
+}
+
+.ride-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ride-card h2 {
+  margin: 12px 2px 6px;
+  font-size: clamp(9px, 1.1vw, 13px);
+  line-height: 1.2;
+  text-align: center;
+}
+
+.ride-card p {
+  margin: 0 4px 7px;
+  font-size: clamp(9px, 1vw, 12px);
+  line-height: 1.4;
+  text-align: center;
+}
+
+@media (max-width: 650px) {
+  .ride-page {
+    min-height: 100svh;
+    padding: 22px 18px;
+  }
+
+  .home-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .ride-stops {
+    right: 16px;
+    bottom: 20px;
+    left: 16px;
+    gap: 8px;
+  }
+
+  .ride-card {
+    padding: 6px;
+  }
+
+  .ride-card:nth-child(2) {
+    margin-bottom: 18px;
+  }
+
+  .ride-card h2 {
+    font-size: 8px;
+  }
+
+  .ride-card p {
+    font-size: 8px;
+  }
+}

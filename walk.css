@@ -1,0 +1,523 @@
+:root {
+  --paper: #f6f0df;
+  --ink: #273a31;
+  --orange: #e8a84e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.walk-app {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+/* 全屏地图 */
+.map-screen {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--paper);
+}
+
+.map-header {
+  position: absolute;
+  z-index: 5;
+  top: clamp(22px, 4vh, 48px);
+  right: clamp(20px, 4vw, 56px);
+  left: clamp(20px, 4vw, 56px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.map-header h1 {
+  margin: 0;
+  font-size: clamp(38px, 6vw, 76px);
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+}
+
+.map-instruction {
+  margin: 14px 0 0;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+/* 右上角的小人 logo，点击返回首页 */
+.home-link {
+  display: block;
+  width: 58px;
+  height: 58px;
+  padding: 5px;
+  border: 1px solid rgba(39, 58, 49, 0.4);
+  border-radius: 50%;
+  background: rgba(255, 253, 244, 0.78);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.home-link img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.home-link:hover {
+  transform: scale(1.08);
+  background: #fffdf4;
+}
+
+/* 地图照片铺开，不用椭圆框 */
+.sketch-map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* 多层柔边组成云状地图 */
+.map-photo-cloud {
+  position: absolute;
+  z-index: 0;
+  inset: 2%;
+  background: url("images/nyc.jpg") center / cover no-repeat;
+  opacity: 0.62;
+  -webkit-mask-image:
+    radial-gradient(ellipse 34% 58% at 23% 51%, #000 56%, transparent 100%),
+    radial-gradient(ellipse 37% 62% at 50% 48%, #000 56%, transparent 100%),
+    radial-gradient(ellipse 34% 57% at 77% 51%, #000 56%, transparent 100%);
+  mask-image:
+    radial-gradient(ellipse 34% 58% at 23% 51%, #000 56%, transparent 100%),
+    radial-gradient(ellipse 37% 62% at 50% 48%, #000 56%, transparent 100%),
+    radial-gradient(ellipse 34% 57% at 77% 51%, #000 56%, transparent 100%);
+  -webkit-mask-composite: source-over;
+  mask-composite: add;
+}
+
+/* 橙色步行路线 */
+.map-drawing {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.walking-route {
+  fill: none;
+  stroke: var(--orange);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 2 17;
+}
+
+/* 地图上的小人 */
+.map-walker {
+  position: absolute;
+  z-index: 2;
+  left: 18%;
+  bottom: 16%;
+  width: clamp(42px, 6vw, 72px);
+  height: clamp(42px, 6vw, 72px);
+  object-fit: contain;
+}
+
+/* 地点照片气泡 */
+.place-bubble {
+  --anchor-shift: -50%;
+
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 7px;
+  border: 1px solid rgba(39, 58, 49, 0.55);
+  border-radius: 999px 999px 18px 18px;
+  background: rgba(255, 253, 244, 0.82);
+  box-shadow: 0 8px 20px rgba(39, 58, 49, 0.14);
+  transform: translate(var(--anchor-shift), -100%);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.place-bubble img {
+  display: block;
+  width: clamp(74px, 9vw, 112px);
+  height: clamp(74px, 9vw, 112px);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.bubble-label {
+  padding: 0 5px 4px;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+/* Central Park 的定位点在北边 */
+.central-bubble {
+  left: 76%;
+  top: 31.5%;
+  --anchor-shift: -50%;
+}
+
+/* Times Square 的气泡放在定位点西侧 */
+.times-bubble {
+  left: 57%;
+  top: 50%;
+  --anchor-shift: -100%;
+}
+
+/* Bryant Park 的气泡放在定位点东侧 */
+.bryant-bubble {
+  left: 60%;
+  top: 55.2%;
+  right: auto;
+  --anchor-shift: 0%;
+}
+
+/* 两个中城气泡用小圆点指向各自的位置 */
+.times-bubble::after,
+.bryant-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(39, 58, 49, 0.55);
+  border-radius: 50%;
+  background: #fffdf4;
+}
+
+.times-bubble::after {
+  right: -7px;
+}
+
+.bryant-bubble::after {
+  left: -7px;
+}
+
+.place-bubble:hover,
+.place-bubble:focus-visible {
+  z-index: 4;
+  transform:
+    translate(var(--anchor-shift), calc(-100% - 6px))
+    rotate(-2deg);
+  box-shadow: 0 14px 26px rgba(39, 58, 49, 0.22);
+}
+
+.map-coordinates {
+  position: absolute;
+  z-index: 3;
+  right: 5%;
+  bottom: 5%;
+  margin: 0;
+  color: rgba(39, 58, 49, 0.8);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+/* 地点步行场景 */
+.walk-scene {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #1d342a;
+  color: white;
+}
+
+.scene-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180vw;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.45s ease;
+  will-change: transform;
+}
+
+.scene-shade {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.48), transparent 76%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.35), transparent 55%);
+  pointer-events: none;
+}
+
+.scene-header {
+  position: absolute;
+  z-index: 3;
+  inset: 24px 28px auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.back-map {
+  padding: 11px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.18);
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.back-map:hover {
+  background: white;
+  color: var(--ink);
+}
+
+.scene-heading {
+  max-width: 420px;
+  text-align: right;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+}
+
+.scene-heading h2 {
+  margin: 0;
+  font-size: clamp(28px, 5vw, 58px);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.scene-heading p:last-child {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.walking-character {
+  position: absolute;
+  z-index: 2;
+  left: 12%;
+  bottom: 11%;
+  width: clamp(58px, 9vw, 100px);
+  height: clamp(80px, 15vh, 150px);
+  object-fit: contain;
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.4));
+  transition: left 0.4s ease;
+}
+
+.walk-progress {
+  position: absolute;
+  z-index: 3;
+  left: 28px;
+  bottom: 28px;
+  width: min(260px, 42vw);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.progress-track {
+  height: 4px;
+  margin-top: 9px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.progress-fill {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--orange);
+  transition: width 0.3s ease;
+}
+
+.walk-controls {
+  position: absolute;
+  z-index: 3;
+  right: 28px;
+  bottom: 24px;
+  display: flex;
+  gap: 9px;
+}
+
+.walk-controls button {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.22);
+  color: white;
+  font-size: 22px;
+}
+
+.walk-controls button:hover {
+  background: white;
+  color: var(--ink);
+}
+
+.keyboard-hint {
+  position: absolute;
+  z-index: 3;
+  right: 28px;
+  bottom: 82px;
+  margin: 0;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* 手机屏幕 */
+@media (max-width: 650px) {
+  .map-header {
+    top: 22px;
+    right: 18px;
+    left: 18px;
+  }
+
+  .map-header h1 {
+    font-size: 42px;
+  }
+
+  .home-link {
+    width: 48px;
+    height: 48px;
+  }
+
+  .place-bubble img {
+    width: 68px;
+    height: 68px;
+  }
+
+  .bubble-label {
+    font-size: 7px;
+  }
+
+  .central-bubble {
+    left: 76%;
+    top: 31.5%;
+  }
+
+  .times-bubble {
+    left: 57%;
+    top: 50%;
+  }
+
+  .bryant-bubble {
+    left: 60%;
+    top: 55.2%;
+  }
+
+  .map-walker {
+    left: 15%;
+    bottom: 12%;
+  }
+
+  .scene-header {
+    inset: 16px 16px auto;
+    flex-direction: column;
+  }
+
+  .scene-heading {
+    align-self: flex-end;
+    max-width: 80%;
+  }
+
+  .scene-heading h2 {
+    font-size: 36px;
+  }
+
+  .scene-heading p:last-child {
+    font-size: 12px;
+  }
+
+  .walking-character {
+    bottom: 15%;
+  }
+
+  .walk-progress {
+    left: 16px;
+    bottom: 22px;
+    width: 38vw;
+  }
+
+  .walk-controls {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .walk-controls button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .keyboard-hint {
+    right: 16px;
+    bottom: 68px;
+    font-size: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

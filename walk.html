@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WALK — Little Figures, Big City</title>
+  <link rel="stylesheet" href="walk.css">
+</head>
+
+<body>
+  <main class="walk-app">
+
+    <!-- 地图首页 -->
+    <section class="map-screen" id="mapScreen">
+      <header class="map-header">
+        <div>
+          <p class="eyebrow">LITTLE FIGURES, BIG CITY</p>
+          <h1>TAKE A WALK</h1>
+          <p class="map-instruction">CHOOSE A PLACE TO EXPLORE</p>
+        </div>
+
+        <a class="home-link" href="index.html" aria-label="Back to home">
+          <img src="images/walker.png" alt="">
+        </a>
+      </header>
+
+      <div class="sketch-map">
+        <!-- 纽约地图照片的云状柔边 -->
+        <div class="map-photo-cloud" aria-hidden="true"></div>
+
+        <!-- 路线从左下方出发，经过 Bryant Park、Times Square，再向北到 Central Park -->
+        <svg class="map-drawing" viewBox="0 0 1000 700" aria-hidden="true">
+          <path
+            class="walking-route"
+            d="M 230 570
+               C 320 520, 480 420, 600 386
+               Q 630 370, 570 350
+               C 620 310, 690 255, 760 220"
+          ></path>
+        </svg>
+
+        <!-- 地图上的小人 -->
+        <img
+          class="map-walker"
+          src="images/walker.png"
+          alt="Walking character"
+        >
+
+        <!-- Central Park：北边 -->
+        <button
+          class="place-bubble central-bubble"
+          type="button"
+          data-place="centralPark"
+          aria-label="Explore Central Park"
+        >
+          <img src="images/central-park.jpg" alt="">
+          <span class="bubble-label">CENTRAL PARK</span>
+        </button>
+
+        <!-- Times Square：Bryant Park 北边 -->
+        <button
+          class="place-bubble times-bubble"
+          type="button"
+          data-place="timesSquare"
+          aria-label="Explore Times Square"
+        >
+          <img src="images/times-square.jpg" alt="">
+          <span class="bubble-label">TIMES SQUARE</span>
+        </button>
+
+        <!-- Bryant Park：Times Square 南边、稍偏东 -->
+        <button
+          class="place-bubble bryant-bubble"
+          type="button"
+          data-place="bryantPark"
+          aria-label="Explore Bryant Park"
+        >
+          <img src="images/bryant-park.jpg" alt="">
+          <span class="bubble-label">BRYANT PARK</span>
+        </button>
+
+        <p class="map-coordinates">MANHATTAN, NEW YORK CITY</p>
+      </div>
+    </section>
+
+    <!-- 点击地点后进入对应的步行场景 -->
+    <section class="walk-scene" id="walkScene" hidden>
+      <img class="scene-background" id="sceneBackground" src="" alt="">
+      <div class="scene-shade"></div>
+
+      <header class="scene-header">
+        <button class="back-map" id="backToMap" type="button">
+          ← BACK TO MAP
+        </button>
+
+        <div class="scene-heading">
+          <p class="eyebrow">WALKING THROUGH NEW YORK</p>
+          <h2 id="sceneTitle"></h2>
+          <p id="sceneDescription"></p>
+        </div>
+      </header>
+
+      <img
+        class="walking-character"
+        id="walkingCharacter"
+        src="images/walk.png"
+        alt="Walking character"
+      >
+
+      <div class="walk-progress" aria-label="Walking progress">
+        <span id="progressLabel">KEEP WALKING</span>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <div class="walk-controls" aria-label="Walking controls">
+        <button id="stepBack" type="button" aria-label="Walk backward">←</button>
+        <button id="stepForward" type="button" aria-label="Walk forward">→</button>
+      </div>
+
+      <p class="keyboard-hint">USE ← → OR A / D TO WALK</p>
+    </section>
+
+  </main>
+
+  <script>
+    const mapScreen = document.getElementById("mapScreen");
+    const walkScene = document.getElementById("walkScene");
+    const sceneBackground = document.getElementById("sceneBackground");
+    const sceneTitle = document.getElementById("sceneTitle");
+    const sceneDescription = document.getElementById("sceneDescription");
+    const walkingCharacter = document.getElementById("walkingCharacter");
+    const progressFill = document.getElementById("progressFill");
+    const progressLabel = document.getElementById("progressLabel");
+
+    const places = {
+      centralPark: {
+        title: "CENTRAL PARK",
+        image: "images/central-park.jpg",
+        alt: "A walking path in Central Park",
+        description: "A quiet stretch of green where the city’s pace begins to slow."
+      },
+      timesSquare: {
+        title: "TIMES SQUARE",
+        image: "images/times-square.jpg",
+        alt: "The lights and streets of Times Square",
+        description: "Bright lights and busy crowds keep the heart of Midtown in motion."
+      },
+      bryantPark: {
+        title: "BRYANT PARK",
+        image: "images/bryant-park.jpg",
+        alt: "A path through Bryant Park",
+        description: "A small pause between office towers and the rush of the city."
+      }
+    };
+
+    let walkingProgress = 0;
+
+    function openPlace(placeKey) {
+      const place = places[placeKey];
+      if (!place) return;
+
+      sceneTitle.textContent = place.title;
+      sceneDescription.textContent = place.description;
+      sceneBackground.src = place.image;
+      sceneBackground.alt = place.alt;
+
+      walkingProgress = 0;
+      updateWalking();
+
+      mapScreen.hidden = true;
+      walkScene.hidden = false;
+    }
+
+    function updateWalking() {
+      const progress = Math.max(0, Math.min(100, walkingProgress));
+
+      progressFill.style.width = `${progress}%`;
+      progressLabel.textContent =
+        progress >= 100 ? "YOU ARRIVED" : "KEEP WALKING";
+
+      walkingCharacter.style.left = `${12 + progress * 0.45}%`;
+      sceneBackground.style.transform =
+        `translateX(-${progress * 0.55}vw)`;
+    }
+
+    function moveForward() {
+      walkingProgress = Math.min(100, walkingProgress + 8);
+      updateWalking();
+    }
+
+    function moveBackward() {
+      walkingProgress = Math.max(0, walkingProgress - 8);
+      updateWalking();
+    }
+
+    document.querySelectorAll(".place-bubble").forEach((button) => {
+      button.addEventListener("click", () => {
+        openPlace(button.dataset.place);
+      });
+    });
+
+    document.getElementById("backToMap").addEventListener("click", () => {
+      walkScene.hidden = true;
+      mapScreen.hidden = false;
+    });
+
+    document.getElementById("stepForward").addEventListener("click", moveForward);
+    document.getElementById("stepBack").addEventListener("click", moveBackward);
+
+    document.addEventListener("keydown", (event) => {
+      if (walkScene.hidden) return;
+
+      if (event.key === "ArrowRight" || event.key.toLowerCase() === "d") {
+        event.preventDefault();
+        moveForward();
+      }
+
+      if (event.key === "ArrowLeft" || event.key.toLowerCase() === "a") {
+        event.preventDefault();
+        moveBackward();
+      }
+    });
+  </script>
+</body>
+</html>
