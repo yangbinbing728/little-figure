@@ -26,7 +26,6 @@ button {
   display: none !important;
 }
 
-/* 所有阶段都占满屏幕 */
 .intro,
 .photo-screen,
 .open,
@@ -40,7 +39,6 @@ button {
   overflow: hidden;
 }
 
-/* 第一阶段：地铁视频 */
 .intro,
 .open {
   background: #071d18;
@@ -98,7 +96,6 @@ button {
   color: #123d30;
 }
 
-/* 第二阶段：你自己的大图 */
 .photo-screen {
   background: #071d18;
 }
@@ -144,7 +141,6 @@ button {
   color: #123d30;
 }
 
-/* 第四阶段：全屏地图背景 */
 .map-screen {
   isolation: isolate;
   background-color: #07563f;
@@ -156,7 +152,6 @@ button {
   background-repeat: no-repeat;
 }
 
-/* 标题和副标题按正常顺序排列，避免重叠 */
 .map-heading {
   position: absolute;
   z-index: 3;
@@ -346,7 +341,6 @@ button {
   color: #123d30;
 }
 
-/* 手机屏幕 */
 @media (max-width: 700px) {
   .intro,
   .photo-screen,

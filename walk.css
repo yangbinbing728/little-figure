@@ -40,7 +40,6 @@ button {
   min-height: 100svh;
 }
 
-/* 全屏地图 */
 .map-screen {
   position: relative;
   width: 100%;
@@ -85,7 +84,6 @@ button {
   letter-spacing: 0.12em;
 }
 
-/* 右上角的小人 logo，点击返回首页 */
 .home-link {
   display: block;
   width: 58px;
@@ -109,7 +107,6 @@ button {
   background: #fffdf4;
 }
 
-/* 地图照片铺开，不用椭圆框 */
 .sketch-map {
   position: absolute;
   inset: 0;
@@ -122,7 +119,6 @@ button {
   box-shadow: none;
 }
 
-/* 多层柔边组成云状地图 */
 .map-photo-cloud {
   position: absolute;
   z-index: 0;
@@ -141,7 +137,6 @@ button {
   mask-composite: add;
 }
 
-/* 橙色步行路线 */
 .map-drawing {
   position: absolute;
   z-index: 1;
@@ -160,7 +155,6 @@ button {
   stroke-dasharray: 2 17;
 }
 
-/* 地图上的小人 */
 .map-walker {
   position: absolute;
   z-index: 2;
@@ -171,7 +165,6 @@ button {
   object-fit: contain;
 }
 
-/* 地点照片气泡 */
 .place-bubble {
   --anchor-shift: -50%;
 
@@ -206,14 +199,12 @@ button {
   white-space: nowrap;
 }
 
-/* Central Park 的定位点在北边 */
 .central-bubble {
   left: 76%;
   top: 31.5%;
   --anchor-shift: -50%;
 }
 
-/* Times Square 的气泡放在定位点西侧 */
 .times-bubble {
   left: 57%;
   top: 50%;
@@ -228,7 +219,6 @@ button {
   --anchor-shift: 0%;
 }
 
-/* 两个中城气泡用小圆点指向各自的位置 */
 .times-bubble::after,
 .bryant-bubble::after {
   content: "";
@@ -270,7 +260,6 @@ button {
   letter-spacing: 0.13em;
 }
 
-/* 地点步行场景 */
 .walk-scene {
   position: fixed;
   inset: 0;
@@ -423,7 +412,6 @@ button {
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* 手机屏幕 */
 @media (max-width: 650px) {
   .map-header {
     top: 22px;

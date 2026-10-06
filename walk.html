@@ -10,7 +10,7 @@
 <body>
   <main class="walk-app">
 
-    <!-- 地图首页 -->
+
     <section class="map-screen" id="mapScreen">
       <header class="map-header">
         <div>
@@ -25,10 +25,9 @@
       </header>
 
       <div class="sketch-map">
-        <!-- 纽约地图照片的云状柔边 -->
+    
         <div class="map-photo-cloud" aria-hidden="true"></div>
 
-        <!-- 路线从左下方出发，经过 Bryant Park、Times Square，再向北到 Central Park -->
         <svg class="map-drawing" viewBox="0 0 1000 700" aria-hidden="true">
           <path
             class="walking-route"
@@ -39,14 +38,12 @@
           ></path>
         </svg>
 
-        <!-- 地图上的小人 -->
         <img
           class="map-walker"
           src="images/walker.png"
           alt="Walking character"
         >
 
-        <!-- Central Park：北边 -->
         <button
           class="place-bubble central-bubble"
           type="button"
@@ -57,7 +54,6 @@
           <span class="bubble-label">CENTRAL PARK</span>
         </button>
 
-        <!-- Times Square：Bryant Park 北边 -->
         <button
           class="place-bubble times-bubble"
           type="button"
@@ -68,7 +64,6 @@
           <span class="bubble-label">TIMES SQUARE</span>
         </button>
 
-        <!-- Bryant Park：Times Square 南边、稍偏东 -->
         <button
           class="place-bubble bryant-bubble"
           type="button"
@@ -83,7 +78,6 @@
       </div>
     </section>
 
-    <!-- 点击地点后进入对应的步行场景 -->
     <section class="walk-scene" id="walkScene" hidden>
       <img class="scene-background" id="sceneBackground" src="" alt="">
       <div class="scene-shade"></div>
