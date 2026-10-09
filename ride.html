@@ -6,12 +6,10 @@
   <title>RIDE — Little Figures, Big City</title>
   <link rel="stylesheet" href="ride.css">
 </head>
-
 <body>
   <main class="ride-page">
-
     <header class="ride-header">
-      <div>
+      <div class="header-copy">
         <p class="eyebrow">LITTLE FIGURES, BIG CITY</p>
         <h1>RIDE</h1>
         <p class="instruction">CHOOSE A ROUTE TO EXPLORE</p>
@@ -22,28 +20,211 @@
       </a>
     </header>
 
-    <div class="map-label">NEW YORK CITY</div>
+    <div class="map-label">
+      <span class="map-label-line"></span>
+      NEW YORK CITY
+      <span class="map-label-coordinates">40.7128° N / 74.0060° W</span>
+    </div>
 
-    <section class="ride-stops" aria-label="Ride destinations">
-      <article class="ride-card">
-        <img src="images/central-park.jpg" alt="Central Park">
-        <h2>CENTRAL PARK LOOP</h2>
-        <p>A ride through the trees and open paths.</p>
-      </article>
+    <section class="ride-section" aria-label="Ride destinations">
+      <div class="section-intro">
+        <p class="section-kicker">THREE ROUTES · THREE CITY RHYTHMS</p>
+        <p class="section-note">Choose a destination to see more.</p>
+      </div>
 
-      <article class="ride-card">
-        <img src="images/hudson-greenway.jpg" alt="Hudson River Greenway">
-        <h2>HUDSON RIVER GREENWAY</h2>
-        <p>Follow the river along the west side of Manhattan.</p>
-      </article>
+      <div class="ride-stops">
+        <svg
+          class="route-connector"
+          viewBox="0 0 1000 160"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path d="M 115 80 C 245 15, 335 145, 500 80 S 755 15, 885 80"></path>
+        </svg>
 
-      <article class="ride-card">
-        <img src="images/brooklyn-bridge.jpg" alt="Brooklyn Bridge">
-        <h2>BROOKLYN BRIDGE</h2>
-        <p>Ride across the bridge and look back at the skyline.</p>
-      </article>
+        <button
+          class="ride-card"
+          type="button"
+          data-route="centralPark"
+          aria-label="Explore Central Park Loop"
+        >
+          <span class="card-number">01</span>
+          <span class="card-image-wrap">
+            <img src="images/central-park.jpg" alt="Central Park">
+            <span class="image-arrow" aria-hidden="true">↗</span>
+          </span>
+          <span class="card-copy">
+            <span class="card-type">GREEN SPACE</span>
+            <span class="card-title">CENTRAL PARK LOOP</span>
+            <span class="card-description">
+              A ride through the trees and open paths.
+            </span>
+            <span class="card-action">
+              VIEW ROUTE <span aria-hidden="true">→</span>
+            </span>
+          </span>
+        </button>
+
+        <button
+          class="ride-card"
+          type="button"
+          data-route="hudsonGreenway"
+          aria-label="Explore Hudson River Greenway"
+        >
+          <span class="card-number">02</span>
+          <span class="card-image-wrap">
+            <img src="images/hudson-greenway.jpg" alt="Hudson River Greenway">
+            <span class="image-arrow" aria-hidden="true">↗</span>
+          </span>
+          <span class="card-copy">
+            <span class="card-type">WATERFRONT</span>
+            <span class="card-title">HUDSON RIVER GREENWAY</span>
+            <span class="card-description">
+              Follow the river along the west side of Manhattan.
+            </span>
+            <span class="card-action">
+              VIEW ROUTE <span aria-hidden="true">→</span>
+            </span>
+          </span>
+        </button>
+
+        <button
+          class="ride-card"
+          type="button"
+          data-route="brooklynBridge"
+          aria-label="Explore Brooklyn Bridge"
+        >
+          <span class="card-number">03</span>
+          <span class="card-image-wrap">
+            <img src="images/brooklyn-bridge.jpg" alt="Brooklyn Bridge">
+            <span class="image-arrow" aria-hidden="true">↗</span>
+          </span>
+          <span class="card-copy">
+            <span class="card-type">CITY LANDMARK</span>
+            <span class="card-title">BROOKLYN BRIDGE</span>
+            <span class="card-description">
+              Ride across the bridge and look back at the skyline.
+            </span>
+            <span class="card-action">
+              VIEW ROUTE <span aria-hidden="true">→</span>
+            </span>
+          </span>
+        </button>
+      </div>
     </section>
 
+    <section
+      class="route-detail"
+      id="routeDetail"
+      aria-live="polite"
+      aria-hidden="true"
+    >
+      <button
+        class="detail-close"
+        id="detailClose"
+        type="button"
+        aria-label="Close route details"
+      >×</button>
+
+      <div class="detail-image-wrap">
+        <img id="detailImage" src="" alt="">
+        <span class="detail-index" id="detailIndex"></span>
+      </div>
+
+      <div class="detail-copy">
+        <p class="section-kicker" id="detailCategory"></p>
+        <h2 id="detailTitle"></h2>
+        <p id="detailDescription"></p>
+        <div class="detail-route-line">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <p class="detail-caption">A ROUTE THROUGH NEW YORK CITY</p>
+      </div>
+    </section>
+
+    <footer class="ride-footer">
+      <a href="map.html">← BACK TO MAP</a>
+      <span>WALK · RIDE · SUBWAY</span>
+    </footer>
   </main>
+
+  <script>
+    const rideInfo = {
+      centralPark: {
+        number: "01 / 03",
+        category: "GREEN SPACE · MANHATTAN",
+        title: "Central Park Loop",
+        image: "images/central-park.jpg",
+        alt: "Central Park",
+        description:
+          "A ride through the trees and open paths. Leave the busy avenues behind and find a slower rhythm inside the park."
+      },
+
+      hudsonGreenway: {
+        number: "02 / 03",
+        category: "WATERFRONT · WEST SIDE",
+        title: "Hudson River Greenway",
+        image: "images/hudson-greenway.jpg",
+        alt: "Hudson River Greenway",
+        description:
+          "Follow the river along the west side of Manhattan, with open views and a little more room to breathe."
+      },
+
+      brooklynBridge: {
+        number: "03 / 03",
+        category: "CITY LANDMARK · EAST RIVER",
+        title: "Brooklyn Bridge",
+        image: "images/brooklyn-bridge.jpg",
+        alt: "Brooklyn Bridge",
+        description:
+          "Ride across the bridge and look back at the skyline. The route turns the city into a view behind you."
+      }
+    };
+
+    const detail = document.getElementById("routeDetail");
+    const detailImage = document.getElementById("detailImage");
+    const detailIndex = document.getElementById("detailIndex");
+    const detailCategory = document.getElementById("detailCategory");
+    const detailTitle = document.getElementById("detailTitle");
+    const detailDescription = document.getElementById("detailDescription");
+    const detailClose = document.getElementById("detailClose");
+
+    function openRoute(key) {
+      const route = rideInfo[key];
+      if (!route) return;
+
+      detailImage.src = route.image;
+      detailImage.alt = route.alt;
+      detailIndex.textContent = route.number;
+      detailCategory.textContent = route.category;
+      detailTitle.textContent = route.title;
+      detailDescription.textContent = route.description;
+
+      detail.classList.add("is-open");
+      detail.setAttribute("aria-hidden", "false");
+      detailClose.focus();
+    }
+
+    function closeRoute() {
+      detail.classList.remove("is-open");
+      detail.setAttribute("aria-hidden", "true");
+    }
+
+    document.querySelectorAll(".ride-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        openRoute(card.dataset.route);
+      });
+    });
+
+    detailClose.addEventListener("click", closeRoute);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeRoute();
+      }
+    });
+  </script>
 </body>
 </html>

@@ -214,29 +214,31 @@
     openVideo.addEventListener("error", showMap);
     skipOpenButton.addEventListener("click", showMap);
 
-    const stationInfo = {
+  const stationInfo = {
   "34st": {
     title: "34 St–Herald Sq",
     image: "images/station-34st.jpg",
-    alt: "34th Street–Herald Square",
-    description: "A steady flow of commuters and visitors crosses paths here every day."
+    alt: "Herald Square and 34th Street",
+    description:
+      "Herald Square takes its name from the New York Herald, which once published nearby. Macy’s opened its Herald Square store in 1902, helping make this area one of Midtown’s busiest shopping destinations."
   },
 
   "timesSquare": {
     title: "Times Sq–42 St",
     image: "images/station-times-square.jpg",
     alt: "Times Square",
-    description: "Bright lights and rushing crowds make this station feel always in motion."
+    description:
+      "This intersection was once called Longacre Square. It became Times Square in 1904, and the first New Year’s Eve ball drop took place here in 1907."
   },
 
   "57st": {
     title: "57 St–7 Av",
     image: "images/station-57st.jpg",
-    alt: "57th Street and Seventh Avenue",
-    description: "People move in every direction, each following their own rhythm."
+    alt: "Carnegie Hall near 57th Street and Seventh Avenue",
+    description:
+      "Carnegie Hall, just steps away at Seventh Avenue and 57th Street, opened in 1891. For generations, performers and audiences have made this corner a landmark for music in New York."
   }
 };
-
     const stationCard = document.getElementById("stationCard");
     const stationImage = document.getElementById("stationImage");
     const stationTitle = document.getElementById("stationTitle");

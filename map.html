@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MAP — Little Figures, Big City</title>
+  <link rel="stylesheet" href="map.css">
+</head>
+<body>
+  <main class="map-page">
+    <img class="map-photo" src="images/nyc-map.jpg" alt="Map of New York City">
+    <div class="map-shade" aria-hidden="true"></div>
+
+    <a class="back-home" href="index.html">← BACK HOME</a>
+
+    <header class="map-heading">
+      <p class="eyebrow">LITTLE FIGURES, BIG CITY</p>
+      <h1>EXPLORE<br>NEW YORK</h1>
+      <p class="instruction">CHOOSE HOW YOU WANT TO MOVE</p>
+    </header>
+
+    <svg class="route-line" viewBox="0 0 1000 800" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M 475 210 C 525 310, 430 380, 510 465 S 555 595, 475 690"></path>
+    </svg>
+
+    <nav class="map-stops" aria-label="Choose a way to explore">
+      <a class="map-stop walk-stop" href="walk.html">
+        <span class="stop-dot">W</span>
+        <span class="stop-copy">
+          <strong>WALK</strong>
+          <small>Explore the city on foot</small>
+        </span>
+      </a>
+
+      <a class="map-stop ride-stop" href="ride.html">
+        <span class="stop-dot">R</span>
+        <span class="stop-copy">
+          <strong>RIDE</strong>
+          <small>Move through the streets</small>
+        </span>
+      </a>
+
+      <a class="map-stop subway-stop" href="subway.html">
+        <span class="stop-dot">N</span>
+        <span class="stop-copy">
+          <strong>SUBWAY</strong>
+          <small>Follow the N / Q / R line</small>
+        </span>
+      </a>
+    </nav>
+
+    <footer class="map-footer">
+      <span>MANHATTAN · NEW YORK CITY</span>
+      <span>WALK · RIDE · SUBWAY</span>
+    </footer>
+  </main>
+</body>
+</html>
