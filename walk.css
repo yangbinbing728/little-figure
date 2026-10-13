@@ -36,14 +36,10 @@ button {
   display: none !important;
 }
 
-/* MAIN APP */
-
 .walk-app {
   min-height: 100vh;
   min-height: 100svh;
 }
-
-/* MAP SCREEN */
 
 .map-screen {
   position: relative;
@@ -55,8 +51,6 @@ button {
   isolation: isolate;
   background: var(--paper);
 }
-
-/* HEADER */
 
 .map-header {
   position: absolute;
@@ -92,8 +86,6 @@ button {
   letter-spacing: 0.12em;
 }
 
-/* HOME BUTTON */
-
 .home-link {
   display: block;
   width: 58px;
@@ -122,8 +114,6 @@ button {
   background: #fffdf4;
 }
 
-/* MAP CONTAINER */
-
 .sketch-map {
   position: absolute;
   inset: 0;
@@ -137,9 +127,6 @@ button {
   background: transparent;
   box-shadow: none;
 }
-
-/* ORIGINAL MAP BACKGROUND */
-/* Keep the existing NYC image */
 
 .map-photo-cloud {
   position: absolute;
@@ -190,7 +177,6 @@ button {
   mask-composite: add;
 }
 
-/* WALKING ROUTE */
 
 .map-drawing {
   position: absolute;
@@ -212,8 +198,6 @@ button {
   stroke-dasharray: 2 17;
 }
 
-/* WALKING FIGURE ON MAP */
-
 .map-walker {
   position: absolute;
   z-index: 2;
@@ -227,8 +211,6 @@ button {
   object-fit: contain;
   transform: translate(-50%, -50%);
 }
-
-/* LOCATION PHOTO CARDS */
 
 .place-bubble {
   --anchor-shift: -50%;
@@ -287,17 +269,11 @@ button {
   --anchor-shift: -50%;
 }
 
-/* TIMES SQUARE */
-/* Southwest of Bryant Park */
-
 .times-bubble {
   left: 49%;
   top: 52%;
   --anchor-shift: -100%;
 }
-
-/* BRYANT PARK */
-/* East of Times Square */
 
 .bryant-bubble {
   left: 55%;
@@ -306,7 +282,6 @@ button {
   --anchor-shift: 0%;
 }
 
-/* LOCATION ANCHOR DOTS */
 
 .times-bubble::after,
 .bryant-bubble::after {
@@ -331,8 +306,6 @@ button {
   left: -7px;
 }
 
-/* HOVER */
-
 .place-bubble:hover,
 .place-bubble:focus-visible {
   z-index: 4;
@@ -347,8 +320,6 @@ button {
   box-shadow:
     0 14px 26px rgba(39, 58, 49, 0.22);
 }
-
-/* MAP FOOTER */
 
 .map-coordinates {
   position: absolute;
@@ -366,8 +337,6 @@ button {
   letter-spacing: 0.13em;
 }
 
-/* WALKING SCENE */
-
 .walk-scene {
   position: fixed;
   inset: 0;
@@ -377,8 +346,6 @@ button {
   background: #1d342a;
   color: white;
 }
-
-/* SCENE BACKGROUND */
 
 .scene-background {
   position: absolute;
@@ -417,8 +384,6 @@ button {
   pointer-events: none;
 }
 
-/* SCENE HEADER */
-
 .scene-header {
   position: absolute;
   z-index: 3;
@@ -430,8 +395,6 @@ button {
   justify-content: space-between;
   gap: 24px;
 }
-
-/* BACK TO MAP */
 
 .back-map {
   padding: 11px 16px;
@@ -451,8 +414,6 @@ button {
   background: white;
   color: var(--ink);
 }
-
-/* SCENE TITLE */
 
 .scene-heading {
   max-width: 420px;
@@ -476,8 +437,6 @@ button {
   font-size: 13px;
   line-height: 1.45;
 }
-
-/* WALKING CHARACTER */
 
 .walking-character {
   position: absolute;
@@ -590,8 +549,6 @@ button {
     0 1px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* MOBILE */
-
 @media (max-width: 650px) {
 
   .map-header {
@@ -679,7 +636,6 @@ button {
   }
 }
 
-/* REDUCED MOTION */
 
 @media (prefers-reduced-motion: reduce) {
   *,
