@@ -1,9 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>SUBWAY — Little Figures, Big City</title>
+
   <link rel="stylesheet" href="subway.css">
 
   <style>
@@ -15,137 +18,288 @@
 
 <body>
 
+  <!-- FIRST VIDEO -->
 
   <section class="intro" id="intro">
-    <video id="subwayVideo" autoplay muted playsinline preload="auto">
+
+    <video
+      id="subwayVideo"
+      autoplay
+      muted
+      playsinline
+      preload="auto"
+    >
       <source src="videos/subway.mp4" type="video/mp4">
       Your browser does not support video.
     </video>
 
-    <div class="intro-label">N / Q / R — NEW YORK CITY</div>
+    <div class="intro-label">
+      N / Q / R — NEW YORK CITY
+    </div>
 
-    <button class="skip-button" id="skipIntroButton" type="button">
+    <button
+      class="skip-button"
+      id="skipIntroButton"
+      type="button"
+    >
       SKIP MOVING
     </button>
+
   </section>
 
 
-  <section class="photo-screen" id="photoScreen" hidden>
+  <!-- PHOTO SCREEN -->
+
+  <section
+    class="photo-screen"
+    id="photoScreen"
+    hidden
+  >
+
     <img
       class="subway-photo"
       src="images/subway-photo.png"
       alt="Subway introduction"
     >
 
-    <button class="enter-map-button" id="enterOpenButton" type="button">
+    <button
+      class="enter-map-button"
+      id="enterOpenButton"
+      type="button"
+    >
       EXPLORE STATIONS
     </button>
+
   </section>
 
 
-  <section class="open" id="openScreen" hidden>
-    <video id="openVideo" autoplay muted playsinline preload="auto">
+  <!-- SECOND VIDEO -->
+
+  <section
+    class="open"
+    id="openScreen"
+    hidden
+  >
+
+    <video
+      id="openVideo"
+      autoplay
+      muted
+      playsinline
+      preload="auto"
+    >
       <source src="videos/open.mp4" type="video/mp4">
       Your browser does not support video.
     </video>
 
-    <div class="intro-label">N / Q / R — NEW YORK CITY</div>
+    <div class="intro-label">
+      N / Q / R — NEW YORK CITY
+    </div>
 
-    <button class="skip-button" id="skipOpenButton" type="button">
+    <button
+      class="skip-button"
+      id="skipOpenButton"
+      type="button"
+    >
       SKIP OPEN
     </button>
+
   </section>
 
 
-  <main class="map-screen" id="mapScreen" hidden>
+  <!-- SUBWAY MAP -->
+
+  <main
+    class="map-screen"
+    id="mapScreen"
+    hidden
+  >
+
+    <!-- TITLE -->
 
     <header class="map-heading">
-      <h1 class="map-title">LITTLE FIGURES,<br>BIG CITY</h1>
-      <p class="map-subtitle">MIDTOWN MANHATTAN</p>
+
+      <h1 class="map-title">
+        LITTLE FIGURES,<br>
+        BIG CITY
+      </h1>
+
+      <p class="map-subtitle">
+        MIDTOWN MANHATTAN
+      </p>
+
     </header>
 
-    <div class="line-label" aria-label="N Q R subway lines">
+
+    <!-- N Q R ICONS -->
+
+    <div
+      class="line-label"
+      aria-label="N Q R subway lines"
+    >
       <span>N</span>
       <span>Q</span>
       <span>R</span>
     </div>
 
-<<a class="home-logo-button" href="index.html" aria-label="返回首页">
-  <img src="images/subway.png" alt="返回首页">
-</a>
+
+    <!-- HOME BUTTON -->
+
+    <a
+      class="home-logo-button"
+      href="index.html"
+      aria-label="Back to home"
+    >
+      <img
+        src="images/subway.png"
+        alt="Back to home"
+      >
+    </a>
+
+
+    <!-- SUBWAY ROUTE -->
 
     <svg
-  class="route"
-  viewBox="0 0 1000 700"
-  preserveAspectRatio="none"
-  role="group"
-  aria-label="N Q R route with three stations"
->
-  <path
-    class="route-line"
-    d="M 275 545 L 420 430 L 590 300"
-  ></path>
+      class="route"
+      viewBox="0 0 1000 700"
+      preserveAspectRatio="none"
+      role="group"
+      aria-label="N Q R route with three stations"
+    >
 
-  <g
-    class="station"
-    data-station="57st"
-    tabindex="0"
-    role="button"
-    aria-label="Open 57 St–7 Av station"
-  >
-    <circle class="station-dot" cx="590" cy="300" r="13"></circle>
-    <rect
-      class="station-name-bg"
-      x="613"
-      y="282"
-      width="145"
-      height="36"
-      rx="5"
-    ></rect>
-    <text class="station-name" x="625" y="306">57 St–7 Av</text>
-  </g>
+      <!-- YELLOW LINE -->
 
-  <g
-    class="station"
-    data-station="timesSquare"
-    tabindex="0"
-    role="button"
-    aria-label="Open Times Sq–42 St station"
-  >
-    <circle class="station-dot" cx="420" cy="430" r="13"></circle>
-    <rect
-      class="station-name-bg"
-      x="443"
-      y="412"
-      width="175"
-      height="36"
-      rx="5"
-    ></rect>
-    <text class="station-name" x="455" y="436">Times Sq–42 St</text>
-  </g>
+      <path
+        class="route-line"
+        d="
+          M 350 550
+          L 435 435
+          L 540 300
+        "
+      ></path>
 
-  <g
-    class="station"
-    data-station="34st"
-    tabindex="0"
-    role="button"
-    aria-label="Open 34 St–Herald Sq station"
-  >
-    <circle class="station-dot" cx="275" cy="545" r="13"></circle>
-    <rect
-      class="station-name-bg"
-      x="298"
-      y="527"
-      width="183"
-      height="36"
-      rx="5"
-    ></rect>
-    <text class="station-name" x="310" y="551">34 St–Herald Sq</text>
-  </g>
-</svg>
 
-  
-    <section class="station-card" id="stationCard" aria-live="polite">
+      <!-- 57 ST - 7 AV -->
+
+      <g
+        class="station"
+        data-station="57st"
+        tabindex="0"
+        role="button"
+        aria-label="Open 57 St–7 Av station"
+      >
+
+        <circle
+          class="station-dot"
+          cx="540"
+          cy="300"
+          r="13"
+        ></circle>
+
+        <rect
+          class="station-name-bg"
+          x="563"
+          y="282"
+          width="145"
+          height="36"
+          rx="5"
+        ></rect>
+
+        <text
+          class="station-name"
+          x="575"
+          y="306"
+        >
+          57 St–7 Av
+        </text>
+
+      </g>
+
+
+      <!-- TIMES SQUARE - 42 ST -->
+
+      <g
+        class="station"
+        data-station="timesSquare"
+        tabindex="0"
+        role="button"
+        aria-label="Open Times Sq–42 St station"
+      >
+
+        <circle
+          class="station-dot"
+          cx="435"
+          cy="435"
+          r="13"
+        ></circle>
+
+        <rect
+          class="station-name-bg"
+          x="458"
+          y="417"
+          width="175"
+          height="36"
+          rx="5"
+        ></rect>
+
+        <text
+          class="station-name"
+          x="470"
+          y="441"
+        >
+          Times Sq–42 St
+        </text>
+
+      </g>
+
+
+      <!-- 34 ST - HERALD SQUARE -->
+
+      <g
+        class="station"
+        data-station="34st"
+        tabindex="0"
+        role="button"
+        aria-label="Open 34 St–Herald Sq station"
+      >
+
+        <circle
+          class="station-dot"
+          cx="350"
+          cy="550"
+          r="13"
+        ></circle>
+
+        <rect
+          class="station-name-bg"
+          x="373"
+          y="532"
+          width="183"
+          height="36"
+          rx="5"
+        ></rect>
+
+        <text
+          class="station-name"
+          x="385"
+          y="556"
+        >
+          34 St–Herald Sq
+        </text>
+
+      </g>
+
+    </svg>
+
+
+    <!-- STATION INFORMATION CARD -->
+
+    <section
+      class="station-card"
+      id="stationCard"
+      aria-live="polite"
+    >
+
       <button
         class="card-close"
         id="closeCard"
@@ -155,136 +309,292 @@
         ×
       </button>
 
-      <img id="stationImage" src="" alt="">
+      <img
+        id="stationImage"
+        src=""
+        alt=""
+      >
 
       <div class="card-copy">
+
         <h2 id="stationTitle"></h2>
+
         <p id="stationDescription"></p>
+
       </div>
+
     </section>
 
   </main>
 
+
+  <!-- JAVASCRIPT -->
+
   <script>
-    const intro = document.getElementById("intro");
-    const subwayVideo = document.getElementById("subwayVideo");
 
-    const photoScreen = document.getElementById("photoScreen");
-    const openScreen = document.getElementById("openScreen");
-    const openVideo = document.getElementById("openVideo");
-    const mapScreen = document.getElementById("mapScreen");
+    /* SCREENS */
 
-    const skipIntroButton = document.getElementById("skipIntroButton");
-    const enterOpenButton = document.getElementById("enterOpenButton");
-    const skipOpenButton = document.getElementById("skipOpenButton");
+    const intro =
+      document.getElementById("intro");
+
+    const subwayVideo =
+      document.getElementById("subwayVideo");
+
+    const photoScreen =
+      document.getElementById("photoScreen");
+
+    const openScreen =
+      document.getElementById("openScreen");
+
+    const openVideo =
+      document.getElementById("openVideo");
+
+    const mapScreen =
+      document.getElementById("mapScreen");
+
+
+    /* BUTTONS */
+
+    const skipIntroButton =
+      document.getElementById("skipIntroButton");
+
+    const enterOpenButton =
+      document.getElementById("enterOpenButton");
+
+    const skipOpenButton =
+      document.getElementById("skipOpenButton");
+
+
+    /* SCREEN TRANSITIONS */
 
     function showScreen(screenToShow) {
-      const screens = [intro, photoScreen, openScreen, mapScreen];
+
+      const screens = [
+        intro,
+        photoScreen,
+        openScreen,
+        mapScreen
+      ];
 
       screens.forEach((screen) => {
         screen.hidden = screen !== screenToShow;
       });
+
     }
 
 
     function showPhoto() {
+
       subwayVideo.pause();
+
       showScreen(photoScreen);
+
     }
 
+
     function showOpenVideo() {
+
       showScreen(openScreen);
+
       openVideo.currentTime = 0;
+
       openVideo.play().catch(() => {});
+
     }
 
 
     function showMap() {
+
       openVideo.pause();
+
       showScreen(mapScreen);
+
     }
 
-    subwayVideo.addEventListener("ended", showPhoto);
-    subwayVideo.addEventListener("error", showPhoto);
-    skipIntroButton.addEventListener("click", showPhoto);
 
-    enterOpenButton.addEventListener("click", showOpenVideo);
+    /* VIDEO EVENTS */
 
-    openVideo.addEventListener("ended", showMap);
-    openVideo.addEventListener("error", showMap);
-    skipOpenButton.addEventListener("click", showMap);
+    subwayVideo.addEventListener(
+      "ended",
+      showPhoto
+    );
 
-  const stationInfo = {
-  "34st": {
-    title: "34 St–Herald Sq",
-    image: "images/station-34st.jpg",
-    alt: "Herald Square and 34th Street",
-    description:
-      "Herald Square takes its name from the New York Herald, which once published nearby. Macy’s opened its Herald Square store in 1902, helping make this area one of Midtown’s busiest shopping destinations."
-  },
+    subwayVideo.addEventListener(
+      "error",
+      showPhoto
+    );
 
-  "timesSquare": {
-    title: "Times Sq–42 St",
-    image: "images/station-times-square.jpg",
-    alt: "Times Square",
-    description:
-      "This intersection was once called Longacre Square. It became Times Square in 1904, and the first New Year’s Eve ball drop took place here in 1907."
-  },
+    skipIntroButton.addEventListener(
+      "click",
+      showPhoto
+    );
 
-  "57st": {
-    title: "57 St–7 Av",
-    image: "images/station-57st.jpg",
-    alt: "Carnegie Hall near 57th Street and Seventh Avenue",
-    description:
-      "Carnegie Hall, just steps away at Seventh Avenue and 57th Street, opened in 1891. For generations, performers and audiences have made this corner a landmark for music in New York."
-  }
-};
-    const stationCard = document.getElementById("stationCard");
-    const stationImage = document.getElementById("stationImage");
-    const stationTitle = document.getElementById("stationTitle");
-    const stationDescription = document.getElementById("stationDescription");
-    const closeCard = document.getElementById("closeCard");
+    enterOpenButton.addEventListener(
+      "click",
+      showOpenVideo
+    );
+
+    openVideo.addEventListener(
+      "ended",
+      showMap
+    );
+
+    openVideo.addEventListener(
+      "error",
+      showMap
+    );
+
+    skipOpenButton.addEventListener(
+      "click",
+      showMap
+    );
+
+
+    /* STATION INFORMATION */
+
+    const stationInfo = {
+
+      "34st": {
+
+        title: "34 St–Herald Sq",
+
+        image: "images/station-34st.jpg",
+
+        alt: "Herald Square and 34th Street",
+
+        description:
+          "Herald Square takes its name from the New York Herald, which once published nearby. Macy’s opened its Herald Square store in 1902, helping make this area one of Midtown’s busiest shopping destinations."
+
+      },
+
+      "timesSquare": {
+
+        title: "Times Sq–42 St",
+
+        image: "images/station-times-square.jpg",
+
+        alt: "Times Square",
+
+        description:
+          "This intersection was once called Longacre Square. It became Times Square in 1904, and the first New Year’s Eve ball drop took place here in 1907."
+
+      },
+
+      "57st": {
+
+        title: "57 St–7 Av",
+
+        image: "images/station-57st.jpg",
+
+        alt: "Carnegie Hall near 57th Street and Seventh Avenue",
+
+        description:
+          "Carnegie Hall, just steps away at Seventh Avenue and 57th Street, opened in 1891. For generations, performers and audiences have made this corner a landmark for music in New York."
+
+      }
+
+    };
+
+
+    /* STATION CARD ELEMENTS */
+
+    const stationCard =
+      document.getElementById("stationCard");
+
+    const stationImage =
+      document.getElementById("stationImage");
+
+    const stationTitle =
+      document.getElementById("stationTitle");
+
+    const stationDescription =
+      document.getElementById("stationDescription");
+
+    const closeCard =
+      document.getElementById("closeCard");
+
+
+    /* OPEN STATION */
 
     function openStation(station) {
-      const info = stationInfo[station.dataset.station];
+
+      const info =
+        stationInfo[station.dataset.station];
 
       if (!info) return;
 
-      document.querySelectorAll(".station").forEach((item) => {
-        item.classList.remove("active");
-      });
+      document
+        .querySelectorAll(".station")
+        .forEach((item) => {
+          item.classList.remove("active");
+        });
 
       station.classList.add("active");
 
       stationImage.src = info.image;
       stationImage.alt = info.alt;
+
       stationTitle.textContent = info.title;
-      stationDescription.textContent = info.description;
+
+      stationDescription.textContent =
+        info.description;
 
       stationCard.classList.add("open");
+
     }
 
-    document.querySelectorAll(".station").forEach((station) => {
-      station.addEventListener("click", () => {
-        openStation(station);
+
+    /* CLICK STATION */
+
+    document
+      .querySelectorAll(".station")
+      .forEach((station) => {
+
+        station.addEventListener(
+          "click",
+          () => {
+            openStation(station);
+          }
+        );
+
+        station.addEventListener(
+          "keydown",
+          (event) => {
+
+            if (
+              event.key === "Enter" ||
+              event.key === " "
+            ) {
+
+              event.preventDefault();
+
+              openStation(station);
+
+            }
+
+          }
+        );
+
       });
 
-     
-      station.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          openStation(station);
-        }
-      });
-    });
 
-    closeCard.addEventListener("click", () => {
-      stationCard.classList.remove("open");
+    /* CLOSE STATION CARD */
 
-      document.querySelectorAll(".station").forEach((station) => {
-        station.classList.remove("active");
-      });
-    });
+    closeCard.addEventListener(
+      "click",
+      () => {
+
+        stationCard.classList.remove("open");
+
+        document
+          .querySelectorAll(".station")
+          .forEach((station) => {
+            station.classList.remove("active");
+          });
+
+      }
+    );
+
   </script>
 
 </body>
