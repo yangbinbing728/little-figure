@@ -1,52 +1,14 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>POSTER — Little Figures, Big City</title>
-  <link rel="stylesheet" href="poster.css">
-</head>
-
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Poster — Little Figures, Big City</title><link rel="stylesheet" href="poster.css?v=2"><script src="poster.js?v=2" defer></script></head>
 <body>
-  <main class="poster-page">
-
-    <!-- PHOTO 01 -->
-    <section class="poster-section">
-      <img src="images/poster1.png" alt="Poster 01">
-    </section>
-
-    <!-- PHOTO 02 -->
-    <section class="poster-section">
-      <img src="images/poster2.png" alt="Poster 02">
-    </section>
-
-    <!-- PHOTO 03 -->
-    <section class="poster-section">
-      <img src="images/poster3.png" alt="Poster 03">
-    </section>
-
-    <!-- VIDEO -->
-    <section class="poster-section video-section">
-      <video
-        class="poster-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        controls
-      >
-        <source src="videos/poster.mp4" type="video/mp4">
-        Your browser does not support video.
-      </video>
-    </section>
-
-  </main>
-
-  <!-- BACK TO HOME -->
-  <a class="home-logo" href="index.html" aria-label="Back to home">
-    <img src="images/walk.png" alt="Back to home">
-  </a>
-
-</body>
-</html>
+<header class="masthead"><a href="index.html">LITTLE FIGURES,<br>BIG CITY ↗</a><nav aria-label="Main"><a href="about.html">ABOUT</a><a href="map.html">MAP</a><a href="#film">FILM ↘</a></nav></header>
+<main><section class="exhibition" aria-label="Poster collection"><div class="stage">
+<div class="heading"><h1>POSTERS<span>↘</span></h1></div>
+<div class="gallery">
+<aside class="index"><div class="number-window" aria-hidden="true"><div class="number-strip"><span>01</span><span>02</span><span>03</span></div></div><nav class="steps" aria-label="Select poster"><button data-index="0" aria-label="Poster 1: Street" aria-pressed="true">01</button><button data-index="1" aria-label="Poster 2: Stop" aria-pressed="false">02</button><button data-index="2" aria-label="Poster 3: Underground" aria-pressed="false">03</button></nav></aside>
+<div class="artwork"><img class="active" src="images/poster1.png" alt="Green city movement poster on a LinkNYC street display"><img src="images/poster2.png" alt="City movement poster displayed at a bus shelter"><img src="images/poster3.png" alt="City movement poster displayed in a subway station"></div>
+<aside class="details"><div class="copy-stack"><article class="active"><h2>On the<br>street.</h2></article><article><h2>At the<br>stop.</h2></article><article><h2>Under<br>the city.</h2></article></div></aside>
+</div><span class="counter" aria-live="polite" aria-atomic="true">01 / 03 — ON THE STREET</span>
+</div></section>
+<section class="film" id="film"><div><h2>Video</h2></div><video controls muted loop playsinline preload="metadata"><source src="videos/poster.mp4" type="video/mp4"></video><a href="index.html">BACK TO THE CITY ↗</a></section></main><div class="cursor-orb" aria-hidden="true"></div>
+</body></html>
